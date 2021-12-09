@@ -35,10 +35,13 @@ if __name__ == '__main__':
 
     with open("data-secret-santa.csv", 'r') as data:
 
+        # TODO: fix to NOT read first row (name and number attribute name)
+
         line_count = 0
 
-        # if line_count != 0:
         reader = csv.reader(data)
+        # if line_count != 0:
+
         csv_Dict = {rows[0]: rows[1] for rows in reader}
 
         line_count += 1
@@ -48,8 +51,8 @@ if __name__ == '__main__':
         print(var)
 
     # print(csv_Dict)
-    var = csv_Dict["Justin Hayes"]
-    print(var)
+    # var = csv_Dict["Justin Hayes"]
+    # print(var)
 
     # NOW WE HAVE a dictionary with name, number pairs
     # NAME , PhoneNumber
@@ -59,16 +62,19 @@ if __name__ == '__main__':
     # could randomize names into a new structure then destroy each once selected
 
     for key in csv_Dict:
-        # assign partner NOT AS SELF and NOT AS Already selected
-        res = random.choice(list(csv_Dict.items()))
-        pair_Dict[key] = res
+
+        # we now have all the KEYS Here
+        rand_key = random.choice(list(csv_Dict.keys()))
+
+        # TODO: assign partner NOT AS SELF and NOT AS Already selected
+
+        pair_Dict[key] = rand_key
 
     print("\nThe final result map\n")
 
     for key in pair_Dict:
         var = key, pair_Dict[key]
         print(var)
-
 
     # for name in csv_Dict
     # assign random and non repeatable partner from names in csv_Dict
