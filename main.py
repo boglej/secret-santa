@@ -68,19 +68,16 @@ if __name__ == '__main__':
 
         # we now have all the KEYS Here
 
-        # ensure cannot be assigned self as receiver
+        # this while loop ensures cannot be assigned self as receiver
         while True:
             rand_key = random.choice(keys)
 
             if rand_key != key:
+                # Now here remove rand_key from keys list
+                keys.remove(rand_key)
                 break
 
-        # TODO: assign partner NOT AS SELF and NOT AS Already selected
-
-
         pair_Dict[key] = rand_key
-
-
 
     print("\nThe final result map\n")
 
@@ -89,7 +86,7 @@ if __name__ == '__main__':
         print(var)
 
     # for name in csv_Dict
-    # assign random and non repeatable partner from names in csv_Dict
+    # assign random and non-repeatable partner from names in csv_Dict
     # Maybe utilize set?
 
     # Now we need to assign pairs, (new map?)
