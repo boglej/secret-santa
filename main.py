@@ -61,14 +61,26 @@ if __name__ == '__main__':
 
     # could randomize names into a new structure then destroy each once selected
 
+    # keys = csv_Dict.keys()
+    keys = list(csv_Dict.keys())
+
     for key in csv_Dict:
 
         # we now have all the KEYS Here
-        rand_key = random.choice(list(csv_Dict.keys()))
+
+        # ensure cannot be assigned self as receiver
+        while True:
+            rand_key = random.choice(keys)
+
+            if rand_key != key:
+                break
 
         # TODO: assign partner NOT AS SELF and NOT AS Already selected
 
+
         pair_Dict[key] = rand_key
+
+
 
     print("\nThe final result map\n")
 
