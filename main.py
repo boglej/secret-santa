@@ -1,0 +1,83 @@
+# coding=utf-8
+
+import csv
+import random
+
+
+# Press ⌃R to execute it or replace it with your code.
+# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+
+
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print("Hi, {0}".format(name))  # Press ⌘F8 to toggle the breakpoint.
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print_hi('PyCharm')
+
+    # read in names and numbers from .csv
+    with open('data-secret-santa.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0
+
+        for row in csv_reader:
+            if line_count == 0:
+                print(f'Column names are {", ".join(row)}')
+                line_count += 1
+
+            else:
+                print(f'\t name: {row[0]} phoneNumber: {row[1]}')
+                line_count += 1
+
+        print(f'Read {line_count} lines.')
+
+    with open("data-secret-santa.csv", 'r') as data:
+
+        line_count = 0
+
+        # if line_count != 0:
+        reader = csv.reader(data)
+        csv_Dict = {rows[0]: rows[1] for rows in reader}
+
+        line_count += 1
+
+    for key in csv_Dict:
+        var = key, csv_Dict[key]
+        print(var)
+
+    # print(csv_Dict)
+    var = csv_Dict["Justin Hayes"]
+    print(var)
+
+    # NOW WE HAVE a dictionary with name, number pairs
+    # NAME , PhoneNumber
+
+    pair_Dict = {}
+
+    # could randomize names into a new structure then destroy each once selected
+
+    for key in csv_Dict:
+        # assign partner NOT AS SELF and NOT AS Already selected
+        res = random.choice(list(csv_Dict.items()))
+        pair_Dict[key] = res
+
+    print("\nThe final result map\n")
+
+    for key in pair_Dict:
+        var = key, pair_Dict[key]
+        print(var)
+
+
+    # for name in csv_Dict
+    # assign random and non repeatable partner from names in csv_Dict
+    # Maybe utilize set?
+
+    # Now we need to assign pairs, (new map?)
+    # for each name in csv_Dict, give them pair
+    # This reciever cannot be selected again
+
+    # notify through text
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
